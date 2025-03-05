@@ -13,7 +13,7 @@ public class AppLauncher extends Application {
 
 
         primaryStage.setScene(mainWindow.createScene());
-        primaryStage.setTitle("File Processing App");
+        primaryStage.setTitle("File Analyzing App");
         primaryStage.setMaximized(true);
         primaryStage.show();
     }
