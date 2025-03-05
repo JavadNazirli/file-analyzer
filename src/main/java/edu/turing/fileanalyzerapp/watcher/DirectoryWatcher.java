@@ -21,7 +21,7 @@ public class DirectoryWatcher {
         System.out.println("Watching directory: " + directory.toAbsolutePath());
         directory.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE);
 
-        // Başlangıçta mevcut dosyaları tara ve işle
+
         scanExistingFiles();
     }
 
