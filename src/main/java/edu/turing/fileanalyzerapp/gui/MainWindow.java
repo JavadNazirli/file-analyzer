@@ -17,8 +17,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -30,7 +30,7 @@ public class MainWindow extends Application {
     private ListView<String> statusListView;
     private TableView<TradeRecord> table;
     private ObservableList<String> statusMessages;
-    private ObservableList<TradeRecord> tableData;
+    private ObservableList<TradeRecord> tableData; // Tablo verilerini saklamak için
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -70,14 +70,14 @@ public class MainWindow extends Application {
         table.getColumns().addAll(noCol, dateCol, openCol, highCol, lowCol, closeCol, volumeCol);
 
         // Sütun genişliklerini tablonun tamamını kaplayacak şekilde oransal ayarlama
-        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        noCol.setMaxWidth(1f * Integer.MAX_VALUE * 10);
-        dateCol.setMaxWidth(1f * Integer.MAX_VALUE * 20);
-        openCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);
-        highCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);
-        lowCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);
-        closeCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);
-        volumeCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY); // Tablonun tamamını kaplar
+        noCol.setMaxWidth(1f * Integer.MAX_VALUE * 10);   // %10
+        dateCol.setMaxWidth(1f * Integer.MAX_VALUE * 20); // %20
+        openCol.setMaxWidth(1f * Integer.MAX_VALUE * 14); // %14
+        highCol.setMaxWidth(1f * Integer.MAX_VALUE * 14); // %14
+        lowCol.setMaxWidth(1f * Integer.MAX_VALUE * 14);  // %14
+        closeCol.setMaxWidth(1f * Integer.MAX_VALUE * 14); // %14
+        volumeCol.setMaxWidth(1f * Integer.MAX_VALUE * 14); // %14
 
         // Tabloyu sıralanabilir yapma
         table.setSortPolicy(param -> true);
@@ -93,62 +93,11 @@ public class MainWindow extends Application {
         HBox buttonBox = new HBox(10, clearButton);
         buttonBox.setStyle("-fx-padding: 10px; -fx-alignment: center;");
 
-        // Main sekmesi (mevcut arayüz)
-        BorderPane mainPane = new BorderPane();
-        mainPane.setTop(statusListView);
-        mainPane.setCenter(table);
-        mainPane.setBottom(buttonBox);
-
-        Tab mainTab = new Tab("Main");
-        mainTab.setContent(mainPane);
-        mainTab.setClosable(false);
-
-        // Settings sekmesi
-        VBox settingsPane = new VBox(10);
-        settingsPane.setStyle("-fx-padding: 20px; -fx-alignment: center;");
-
-        // Monitoring interval ayarı
-        Label intervalLabel = new Label("Monitoring Interval (seconds):");
-        TextField intervalField = new TextField(String.valueOf(DirectoryConfig.getMonitoringIntervalSeconds()));
-        Button applyButton = new Button("Apply");
-        applyButton.setOnAction(event -> {
-            try {
-                long newInterval = Long.parseLong(intervalField.getText());
-                if (newInterval <= 0) {
-                    updateStatus("Error: Monitoring interval must be greater than 0.");
-                    return;
-                }
-                // Eski DirectoryWatcher'ı durdur
-                if (directoryWatcher != null) {
-                    directoryWatcher.stopMonitoring();
-                }
-                // Yeni DirectoryWatcher oluştur
-                try {
-                    directoryWatcher = new DirectoryWatcher(dataProcessor, newInterval);
-                    directoryWatcher.startMonitoring();
-                    DirectoryConfig.setMonitoringIntervalSeconds(newInterval); // Değeri kaydet
-                    updateStatus("Monitoring interval updated to " + newInterval + " seconds.");
-                } catch (Exception e) {
-                    updateStatus("Error updating monitoring interval: " + e.getMessage());
-                }
-            } catch (NumberFormatException e) {
-                updateStatus("Error: Please enter a valid number for monitoring interval.");
-            }
-        });
-
-        settingsPane.getChildren().addAll(intervalLabel, intervalField, applyButton);
-
-        Tab settingsTab = new Tab("Settings");
-        settingsTab.setContent(settingsPane);
-        settingsTab.setClosable(false);
-
-        // TabPane oluştur
-        TabPane tabPane = new TabPane();
-        tabPane.getTabs().addAll(mainTab, settingsTab);
-
-        // Düzen (TabPane'i root olarak kullan)
+        // Düzen (BorderPane)
         BorderPane root = new BorderPane();
-        root.setCenter(tabPane);
+        root.setTop(statusListView);
+        root.setCenter(table);
+        root.setBottom(buttonBox);
 
         // Scene ve CSS
         Scene scene = new Scene(root, 800, 600);
@@ -163,7 +112,10 @@ public class MainWindow extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.setTitle("File Processing App");
+
+        // Tam ekran yapma
         primaryStage.setMaximized(true);
+
         primaryStage.show();
 
         // LoaderManager ve DataProcessor başlat
@@ -192,9 +144,6 @@ public class MainWindow extends Application {
 
     @Override
     public void stop() {
-        if (directoryWatcher != null) {
-            directoryWatcher.stopMonitoring();
-        }
         if (dataProcessor != null) {
             dataProcessor.shutdown();
         }
