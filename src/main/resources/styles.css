@@ -1,0 +1,59 @@
+/* Genel arka plan */
+.root {
+    -fx-background-color: #f4f4f4; /* Açık gri arka plan */
+}
+
+/* Durum alanı (ListView) */
+.list-view {
+    -fx-background-color: #ffffff; /* Beyaz arka plan */
+    -fx-border-color: #d3d3d3; /* Açık gri çerçeve */
+    -fx-border-width: 1px;
+    -fx-padding: 10px;
+}
+
+/* Tablo */
+.table-view {
+    -fx-background-color: #ffffff; /* Beyaz arka plan */
+    -fx-border-color: #d3d3d3; /* Açık gri çerçeve */
+    -fx-border-width: 1px;
+}
+
+/* Tablo başlıkları */
+.table-view .column-header {
+    -fx-background-color: #4682b4; /* Çelik mavisi */
+    -fx-text-fill: #ffffff; /* Beyaz yazı rengi */
+    -fx-border-color: #ffffff; /* Beyaz ayırıcı çizgi */
+    -fx-border-width: 0 1px 0 0; /* Sağda 1px genişliğinde çizgi */
+    -fx-alignment: center; /* Yazıyı ortala */
+}
+
+/* Son sütunun sağında çizgi olmasın */
+.table-view .column-header {
+    -fx-border-width: 0; /* Son sütunda sağ çizgi yok */
+}
+
+/* Tablo satırları */
+.table-row-cell:odd {
+    -fx-background-color: #f1f0f0; /* Çok açık gri (zebra deseni) */
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff; /* Beyaz */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #e0e0e0; /* Üzerine gelince açık gri */
+}
+
+/* Butonlar */
+.button {
+    -fx-background-color: #4682b4; /* Çelik mavisi */
+    -fx-text-fill: #ffffff; /* Beyaz yazı rengi */
+    -fx-font-weight: bold;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 5px;
+}
+
+.button:hover {
+    -fx-background-color: #5a9bd4; /* Daha açık mavi */
+}
