@@ -57,10 +57,10 @@ public class MainWindow {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
-                    getStyleClass().removeAll("error", "processed", "added"); // Önceki sınıfları kaldır
+                    getStyleClass().removeAll("error", "processed", "added");
                 } else {
                     setText(item);
-                    getStyleClass().removeAll("error", "processed", "added"); // Önceki sınıfları kaldır
+                    getStyleClass().removeAll("error", "processed", "added");
                     if (item.contains("Error")) {
                         getStyleClass().add("error");
                     } else if (item.contains("Processed")) {

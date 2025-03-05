@@ -15,6 +15,15 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.16.0</version>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- https://mvnrepository.com/artifact/javax.xml.parsers/jaxp-api -->
         <dependency>
             <groupId>javax.xml.parsers</groupId>
