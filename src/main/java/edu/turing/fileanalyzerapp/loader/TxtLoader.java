@@ -1,4 +1,5 @@
 package edu.turing.fileanalyzerapp.loader;
+
 import edu.turing.fileanalyzerapp.model.TradeRecord;
 
 import java.nio.file.Files;

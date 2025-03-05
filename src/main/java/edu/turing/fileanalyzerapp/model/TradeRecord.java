@@ -20,12 +20,29 @@ public class TradeRecord {
     }
 
     // Getter ve Setter metodları
-    public LocalDate getDate() { return date; }
-    public double getOpen() { return open; }
-    public double getHigh() { return high; }
-    public double getLow() { return low; }
-    public double getClose() { return close; }
-    public long getVolume() { return volume; }
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public double getOpen() {
+        return open;
+    }
+
+    public double getHigh() {
+        return high;
+    }
+
+    public double getLow() {
+        return low;
+    }
+
+    public double getClose() {
+        return close;
+    }
+
+    public long getVolume() {
+        return volume;
+    }
 
     @Override
     public String toString() {

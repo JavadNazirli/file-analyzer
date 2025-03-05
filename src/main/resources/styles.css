@@ -1,59 +1,148 @@
-/* Genel arka plan */
+
 .root {
-    -fx-background-color: #f4f4f4; /* Açık gri arka plan */
+    -fx-background-color: #f4f4f9;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-font-size: 14px;
 }
 
-/* Durum alanı (ListView) */
-.list-view {
-    -fx-background-color: #ffffff; /* Beyaz arka plan */
-    -fx-border-color: #d3d3d3; /* Açık gri çerçeve */
-    -fx-border-width: 1px;
+
+.border-pane {
+    -fx-background-color: #f4f4f9;
     -fx-padding: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 2);
 }
 
-/* Tablo */
-.table-view {
-    -fx-background-color: #ffffff; /* Beyaz arka plan */
-    -fx-border-color: #d3d3d3; /* Açık gri çerçeve */
+
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
     -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
 }
 
-/* Tablo başlıkları */
+
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: #333333;
+    -fx-padding: 5px;
+}
+
+
+.list-cell:filled {
+    -fx-text-fill: #333333;
+}
+
+.list-cell.error {
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+}
+
+.list-cell.processed {
+    -fx-text-fill: #2ecc71;
+    -fx-font-weight: bold;
+}
+
+.list-cell.added {
+    -fx-text-fill: #3498db;
+    -fx-font-weight: bold;
+}
+
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d0d0d0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 5, 0, 0, 1);
+}
+
+
+.table-view .column-header-background {
+    -fx-background-color: #2980b9;
+    -fx-background-radius: 5px 5px 0 0;
+    -fx-border-radius: 5px 5px 0 0;
+}
+
 .table-view .column-header {
-    -fx-background-color: #4682b4; /* Çelik mavisi */
-    -fx-text-fill: #ffffff; /* Beyaz yazı rengi */
-    -fx-border-color: #ffffff; /* Beyaz ayırıcı çizgi */
-    -fx-border-width: 0 1px 0 0; /* Sağda 1px genişliğinde çizgi */
-    -fx-alignment: center; /* Yazıyı ortala */
+    -fx-background-color: transparent;
 }
 
-/* Son sütunun sağında çizgi olmasın */
-.table-view .column-header {
-    -fx-border-width: 0; /* Son sütunda sağ çizgi yok */
+
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
 }
 
-/* Tablo satırları */
+
+.table-view .column-header .arrow {
+    -fx-background-color: #ffffff;
+}
+
+
+.table-view .column-header-background .column-header.sortable:hover {
+    -fx-background-color: #1f618d;
+}
+
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: #e6f0fa;
+}
+
+
 .table-row-cell:odd {
-    -fx-background-color: #f1f0f0; /* Çok açık gri (zebra deseni) */
+    -fx-background-color: #f9f9f9;
 }
 
 .table-row-cell:even {
-    -fx-background-color: #ffffff; /* Beyaz */
+    -fx-background-color: #ffffff;
 }
 
-.table-row-cell:hover {
-    -fx-background-color: #e0e0e0; /* Üzerine gelince açık gri */
+
+.table-cell {
+    -fx-alignment: center;
+    -fx-text-fill: #333333;
 }
 
-/* Butonlar */
+
 .button {
-    -fx-background-color: #4682b4; /* Çelik mavisi */
-    -fx-text-fill: #ffffff; /* Beyaz yazı rengi */
+    -fx-background-color: #3498db;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-padding: 8px 16px;
     -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-padding: 8px 16px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
 }
+
 
 .button:hover {
-    -fx-background-color: #5a9bd4; /* Daha açık mavi */
+    -fx-background-color: #2980b9;
+    -fx-cursor: hand;
+}
+
+
+.button:pressed {
+    -fx-background-color: #1f618d;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 3, 0, 0, 1);
+}
+
+
+.hbox {
+    -fx-background-color: #f4f4f9;
+    -fx-padding: 10px;
+    -fx-spacing: 10px;
+    -fx-alignment: center;
 }
