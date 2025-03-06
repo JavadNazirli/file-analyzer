@@ -2,7 +2,7 @@
 
 [![Java](https://img.shields.io/badge/Java-17-blue)](https://www.java.com/)
 [![Maven](https://img.shields.io/badge/Maven-Build%20Tool-orange)](https://maven.apache.org/)
-[![License](https://img.shields.io/github/license/JavadNazirli/file-analyzer)](LICENSE)
+
 
 **File Analyzer** is a Java-based application that analyzes file content and provides various statistics. 📊  
 It is designed to process large text or data files and extract useful insights.
